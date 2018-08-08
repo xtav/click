@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <html land="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Click!</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Click!</title>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="main.js"> </script> 
+    
 
 </head>
 
 <body> 
-    <div class="jumbotron jumbotron-fluid">
-          <center>
+    <section class="jumbotron text-center">
+  <div class="jumbotron jumbotron-fluid">
+        <center>
         <h1 class="display-4"> Click! Spots </h1>
-          <p class="lead">Send us your favorite spots! </p>
-          <hr class="my-4">
-          <p></p>
-          <a class="btn btn-primary btn-lg" href="?id={id}" role="button">Submit a new Click!</a></center>
+        <p class="lead">Send us your favorite spots! </p>
+        <hr class="my-4">
+        <p><a href="submit.html" class="btn btn-primary my-2">Submit a new Click!</a></p>
+        
+
         </div>
       </div>
+
+    </section>
     <div class="list-view row"></div>
+    <div class="container detail-view"></div>
 
 </body> 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script src="main.js"></script>
+  <script src="Submit.js"></script>
+  <script src="submit.html"></script>
 </body>
 </html>

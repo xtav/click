@@ -1,30 +1,126 @@
-// This urls is from airtable from the authentication section
+// Helper for getting the `index.html?ID=` part form the URL
+var getParameterByName = function(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 var airtable_list_url = 'https://api.airtable.com/v0/appM9DH9mXour47dP/Table?api_key=key92U04PjpzSuRxg';
 
-var cardTemplate = function(spot, description,picture) {
-    return `
-    <div class="card col-sm-4">
-      <img src="${picture}" class="card-img-top"alt="Card image cap">
+// Airtable API Key, unique per user
+var api_key = 'key92U04PjpzSuRxg';
+
+// Template that generates HTML for one item in our detail view, given the parameters passed in
+var listView = function(spot, picture, description) {
+  return `<div class="col-sm-12">
+    <div class="card mb-4 box-shadow">
+    <h4><a href="index.html?id=${id}">${spot}</a></h4>
+      <img class="card-img-top" src="${picture}">
       <div class="card-body">
-        <h5 class="card-title">${spot}</h5>
-        <p class="card-text">${description}</p>
-        <a href="#" class="btn btn-primary">More Details</a>
+        <h2>${spot}</h2>
+       
+        
+        <div class="d-flex justify-content-between align-items-center">
+          
+        </div>
+        
+        <hr />
+        
       </div>
-    </div>`;
+    </div>
+  </div>`;
+}
 
+//Get and display data of all items
+var getDataForList = function() {
+
+
+  // This is where we get the JSON data from Airtable!
+  
+    $.getJSON( airtable_list_url, function( data ){
+        var items = [];
+        
+      $.each( data.records, function( index, val ) {
+        // console.log(val.fields)
+        var id = val.id;
+        var fields = val.fields;
+        var spot = val.fields['Spot'];
+        
+  
+        var picture = val.fields['Picture'] ? val.fields['Picture'][0].url : '';
+        var html = cardTemplate(id, spot, picture);
+        items.push(html);
+      });
+      $(".list-view").append(items.join(''));
+    });
+  
   }
-// This is where we get the JSON data from Airtable!
 
-$.getJSON( airtable_list_url, function( data ){
-    var items = [];
-     
-  $.each( data.records, function( key, val ) {
-    // console.log(val.fields)
-    var spot = val.fields['Spot'];
-    var description = val.fields['Description'];
-    var picture = val.fields['Picture'] ? val.fields['Picture'][0].url : null;
-    var html = cardTemplate(spot, picture, description);
-    items.push(html);
+// This urls is from airtable from the authentication section
+
+var cardTemplate = function(id, spot, picture) {
+  return `
+  <div class="card col-sm-4">
+    <img src="${picture}" class="card-img-top"alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${spot}</h5>
+      
+      <a href="?id=${id}" class="btn btn-primary">More Details</a>
+    </div>
+  </div>`;
+
+}
+
+// Template that generates HTML for one item in our detail view, given the parameters passed in
+var detailView = function(id, spot, picture, description) {
+  return `<div class="col-sm-12">
+    <div class="card mb-4 box-shadow">
+      <img class="card-img-top" src="${picture}">
+      <div class="card-body">
+        <h2>${spot}</h2>
+        
+        <p class="card-text">${description}</p>
+        <div class="d-flex justify-content-between align-items-center">
+         
+        </div>
+        <hr />
+        <a href="https://www.google.com/maps/search/${spot} ${description}"></a>
+      </div>
+    </div>
+  </div>`;
+}
+
+
+
+// Get and display the data for one item based on on the ID
+var getDataForId = function(id) {
+  $.getJSON( `https://api.airtable.com/v0/appM9DH9mXour47dP/Table/${id}?api_key=key92U04PjpzSuRxg`, function( record ) {
+    // console.log(data);
+    var html = [];
+    html.push(`<div class="row">`);
+      // console.log(val)
+      var id = record.id;
+      var fields = record.fields;
+      var spot = fields["Spot"];
+       var picture = fields["Picture"] ? fields["Picture"][0].url : '';
+      var description = fields["Description"];
+      
+      var itemHTML = detailView(id, spot, picture, description );
+      html.push(itemHTML);
+    html.push(`</div>`);
+    $(".detail-view").append(html.join(""));
   });
-  $(".list-view").append(items.join(''));
-});
+
+}
+
+
+// Do we have an ID in the URL?
+var id = getParameterByName("id");
+ // If we have an ID, we should only get the data for one item
+// Otherwise, we should display the data for all items
+if (id) {
+  getDataForId(id);
+} else {
+  getDataForList(); }
