@@ -1,4 +1,4 @@
-$("#submit-location").on('submit', function(e){
+$("#submit-location").on('submit', function(spot, picture, description){
   e.preventDefault();
   var data = {};
   data.fields = {
@@ -8,7 +8,7 @@ $("#submit-location").on('submit', function(e){
     
   };
   $.post(`https://api.airtable.com/v0/appM9DH9mXour47dP/Table?api_key=key92U04PjpzSuRxg`,
-    data, function () {
+    data, function (spot, picture, description) {
       // On Success
       $("#submit-location").html(`<h2>Thanks for submitting!</h2>`);
     }
