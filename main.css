@@ -1,7 +1,9 @@
-/* body {
-    h1 { 
-        font-size: 36;
-    background:     
+ head{
+    font-size: 50;
+    background-color: blue;
+ }
 
-
-} */
+ body{
+    font-size: 36;
+    background-image: url("camera-lead")
+}

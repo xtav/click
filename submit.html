@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Submit your CLick!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
-  </head>
-  
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Submit your CLick!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+
 <body>
   <section class="jumbotron text-center">
-       <div class="container">
-            <h1 class="jumbotron-heading"><a href="index.html">Where do you click?</a></h1>
-        </div>
+    <div class="container">
+      <h1 class="jumbotron-heading">
+        <a href="index.html">Where do you click?</a>
+      </h1>
+    </div>
   </section>
 
   <div class="container submit-view">
-        <form id="submit-location">
-            <div class="form-group">
-              <label for="Spot">Spot</label>
-              <input required type="text" class="form-control" id="Spot">
-            </div>
+    <form id="submit-location">
+      <div class="form-group">
+        <label for="Spot">Spot</label>
+        <input required type="text" class="form-control" id="Spot">
+      </div>
+      
+      <div class="form-group">
+        <label for="Picture">Photos! Isn't that why we all are here?</label>
+        <input required type="file" class="form-control" id="Picture">
+      </div>
+      
+      <div class="form-group">
+        <label for="Description">Brief Description of Spot</label>
+        <input required type="text" class="form-control" id="Spot">
+      </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        
 
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-       <script src="helpers.js"></script>
-       <script src="submit.js"></script>
-     </body>
-     </html> 
+ <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+          <script src="main.js"></script>
+          <script src="submit.js"></script>
+</body>
+
+</html>
