@@ -7,7 +7,7 @@ $("#submit-location").on('submit', function(e){
     'Description': $(this).find('#Description').val(),
     
   };
-  $.post(`https://api.airtable.com/v0/appSrgke7E0ElZhMY/Table?api_key=${api_key}`,
+  $.post(`https://api.airtable.com/v0/appM9DH9mXour47dP/Table?api_key=key92U04PjpzSuRxg`,
     data, function () {
       // On Success
       $("#submit-location").html(`<h2>Thanks for submitting!</h2>`);
