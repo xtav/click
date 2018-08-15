@@ -67,7 +67,7 @@ var cardTemplate = function(id, spot, picture) {
     <div class="card-body">
       <h5 class="card-title">${spot}</h5>
       
-      <a href="?id=${id}" class="btn btn-primary">More Details</a>
+      <a href="?id=${id}" class="btn btn-warning">More Details</a>
     </div>
   </div>`;
 
@@ -86,7 +86,11 @@ var detailView = function(id, spot, picture, description) {
          
         </div>
         <hr />
-        <a href="https://www.google.com/maps/search/${spot} ${description}"></a>
+        <center> 
+        <a href="https://www.google.com/maps/search/${spot}">
+        <img alt="Map of Location" src="file:///C:/Users/DEMPC-11/Documents/GitHub/click/get%20location.png" />
+      </a> 
+         </center>
       </div>
     </div>
   </div>`;
