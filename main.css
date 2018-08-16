@@ -1,12 +1,16 @@
  head{
-    background-image: url("paper.gif");
+    
 
  }
 
  body{
-    background-image: url("file:///C:/Users/DEMPC-11/Documents/GitHub/click/Background/camera-lead.jpg");
-    background-repeat: repeat-x;
+    
+    background-image: url("http://teibunsifucoidanya.com/wp-content/uploads/2017/04/camera-lead.jpg");
+    background-repeat: repeat-y;
+   
 }
+
+
 
 .jumbotron {
     background-color: transparent;

@@ -14,9 +14,9 @@ var api_key = 'key92U04PjpzSuRxg';
 
 // Template that generates HTML for one item in our detail view, given the parameters passed in
 var listView = function(spot, picture, description) {
-  return `<div class="col-sm-12">
+  return `<div class="col-sm-8">
     <div class="card mb-4 box-shadow">
-    <h4><a href="index.html?id=${id}">${spot}</a></h4>
+    <h2><a href="index.html?id=${id}">${spot}</a></h4>
       <img class="card-img-top" src="${picture}">
       <div class="card-body">
         <h2>${spot}</h2>
@@ -63,6 +63,7 @@ var getDataForList = function() {
 var cardTemplate = function(id, spot, picture) {
   return `
   <div class="card col-sm-4">
+    <p>   </p>
     <img src="${picture}" class="card-img-top"alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${spot}</h5>
@@ -86,9 +87,10 @@ var detailView = function(id, spot, picture, description) {
          
         </div>
         <hr />
+        <p> Below, find out how to get there! </p>
         <center> 
         <a href="https://www.google.com/maps/search/${spot}">
-        <img alt="Map of Location" src="file:///C:/Users/DEMPC-11/Documents/GitHub/click/get%20location.png" />
+        <img alt="Map of Location" src="http://icons-for-free.com/free-icons/png/512/285662.png" />
       </a> 
          </center>
       </div>
